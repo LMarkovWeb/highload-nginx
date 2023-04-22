@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  # yandex-tank:
+  #   image: direvius/yandex-tank:latest
+  #   container_name: tank
+  #   ports:
+  #     - "8088:80"
+  #   volumes:
+  #     - ./data/yandex_tank:/var/loadtest
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./data/nginx/example.conf:/etc/nginx/conf.d/example.conf
+
+  app:
+    build: ./data/app
+    container_name: app
+    ports:
+      - "5000:5000"

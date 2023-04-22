@@ -1,0 +1,18 @@
+overload:
+  enabled: true 
+  package: yandextank.plugins.DataUploader
+  token_file: "token.txt"
+  job_name: test
+
+phantom:
+  address: google.com
+  load_profile:
+    load_type: rps
+    schedule: step(50, 100, 10, 5) 
+  writelog: all
+  uris:
+    - "/"      
+console:
+  enabled: true
+telegraf:
+  enabled: false # let's disable telegraf monitoring for the first time
