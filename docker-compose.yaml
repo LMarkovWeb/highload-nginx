@@ -2,6 +2,15 @@ version: "3.9"
 
 services:
 
+  yandex-tank:
+    image: direvius/yandex-tank
+    container_name: tank
+    entrypoint: /bin/bash
+    volumes:
+      - ./yandex_tank:/var/loadtest
+    stdin_open: true
+    tty: true
+
   nginx:
     image: nginx:latest
     container_name: nginx
