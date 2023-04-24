@@ -5,14 +5,15 @@ overload:
   job_name: test
 
 phantom:
-  address: google.com
+  address: nginx
   load_profile:
     load_type: rps
     schedule: step(50, 100, 10, 5) 
   writelog: all
   uris:
-    - "/"      
+    - "/fac/10" 
+    - "/io/10" 
 console:
   enabled: true
 telegraf:
-  enabled: false # let's disable telegraf monitoring for the first time
+  enabled: false 
