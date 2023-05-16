@@ -19,6 +19,17 @@ services:
       - "80:80"
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - ./data/logs/nginx:/var/log/nginx
+
+  goaccess:
+    image: allinurl/goaccess
+    container_name: goaccess
+    restart: unless-stopped
+    ports:  
+      - "7890:7890"
+    volumes:
+      - ./data/logs/nginx:/logs
+    command: "/logs/access.log -o /logs/report.html --log-format=COMBINED --real-time-html"
 
   app:
     build: ./app
@@ -28,4 +39,3 @@ services:
       - "5000:5000"
     volumes:
       - ./app:/app
-
