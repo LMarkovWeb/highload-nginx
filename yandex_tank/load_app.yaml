@@ -1,0 +1,24 @@
+overload:
+  enabled: true 
+  package: yandextank.plugins.DataUploader
+  token_file: "token.txt"
+  job_name: app_load
+  job_dsc: Нагрузочное тестирование для Python приложения.
+
+phantom:
+  address: app:5000
+  headers:
+    - "[Host: yandex-tank.docker.local]"
+  load_profile:
+    load_type: rps
+    schedule: step(2, 200, 2, 5) 
+  writelog: all
+  uris:
+    - "/fac/100" 
+    - "/io/100" 
+
+console:
+  enabled: true
+
+telegraf:
+  enabled: false 
