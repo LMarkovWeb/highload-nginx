@@ -10,5 +10,8 @@ restart:
 logs:
 	@docker compose logs -tf
 
-tank:
-	@docker exec -ti tank yandex-tank -c load.yaml
+tank-nginx:
+	@docker exec -ti tank yandex-tank -c load_nginx.yaml
+
+tank-app:
+	@docker exec -ti tank yandex-tank -c load_app.yaml

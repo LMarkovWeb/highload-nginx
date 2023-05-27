@@ -11,8 +11,7 @@ upstream app {
 где app - это имя контейнера Docker.  
 
 ## GoAccess
-Анализатор логов в режиме реального времени. Может работать с логами доступа Nginx (access.log).  
-https://goaccess.io/  
+Анализатор логов в режиме реального времени. Может работать с логами доступа Nginx (access.log).   
 Поднят в отдельном контейнере и имеет доступ к папке с логами nginx (data/logs/nginx) на хосте.
 
 ## App
@@ -20,7 +19,7 @@ https://goaccess.io/
 
 ## Яндекс Танк
 Нагрузочное тестирование.  
-Документация https://yandextank.readthedocs.io/en/latest/index.html 
+
 ### Подготовка
 Необходимо получить api token.
 Зарегистрироватьсян на сайте https://overload.yandex.net/.  
@@ -46,3 +45,11 @@ make start
 make stop
 #etc
 ```
+
+## Ссылки
+
+ - [Пример нагрузочного тестирования сайта с Yandex.Tank](https://serveradmin.ru/primer-nagruzochnogo-testirovaniya-sajta-s-yandex-tank/)
+ - [Самый легкий способ составить README](https://readme.so/ru)
+ - [GitHub yandex-tank](https://github.com/yandex/yandex-tank)
+ - [Документация Яндекс Танк](https://yandextank.readthedocs.io/en/latest/index.html)
+ - [GoAccess for Nginx logs](https://goaccess.io/ )
