@@ -4,7 +4,7 @@ start:
 stop:
 	@docker compose down
 
-restart:
+re:
 	@docker compose down && docker compose up -d
 
 logs:
