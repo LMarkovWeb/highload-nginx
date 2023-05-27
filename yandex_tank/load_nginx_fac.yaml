@@ -1,0 +1,35 @@
+# Overloader – используется для загрузки полученных данных в Yandex Overloader или InfluxDB
+overload:
+  enabled: true
+  package: yandextank.plugins.DataUploader
+  token_file: "token.txt"
+  job_name: nginx_load
+  job_dsc: Нагрузочное тестирование для веб-сервера Nginx
+
+# Для выполнения тестов имеется несколько модулей Load generators, по-умолчанию используется Phantom на С++.
+# https://yandextank.readthedocs.io/en/latest/core_and_modules.html#load-generators
+phantom:
+  # имя докер контейнера
+  address: nginx:80
+  # заголовки, передаваемые на тестируемый сервер
+  headers:
+    - "[Host: yandex-tank.docker.local]"
+  load_profile:
+    # rps: requests per second – указываем желаемое количество запросов в секунду
+    load_type: rps
+    # https://yandextank.readthedocs.io/en/latest/tutorial.html?highlight=load_type#tutorials
+    # (a,b,step,dur), где a – начальное кол-во rps, b – конечное, step – на сколько rps увеличивать, dur – время между каждым step
+    schedule: step(100, 400, 10, 5)
+  writelog: all
+  uris:
+    - "/fac/100"
+    # - "/io/100"
+
+# включаем вывод результатов в консоль
+console:
+  enabled: true
+
+# Telegraf – для мониторинга тестируемого хоста – подключается по SSH, запускает свой агент и снимает метрики CPU/mem/etc.
+# https://yandextank.readthedocs.io/en/latest/core_and_modules.html#telegraf
+telegraf:
+  enabled: false

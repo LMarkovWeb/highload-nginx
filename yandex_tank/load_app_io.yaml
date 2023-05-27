@@ -1,5 +1,5 @@
 overload:
-  enabled: true 
+  enabled: true
   package: yandextank.plugins.DataUploader
   token_file: "token.txt"
   job_name: app_load
@@ -11,14 +11,14 @@ phantom:
     - "[Host: yandex-tank.docker.local]"
   load_profile:
     load_type: rps
-    schedule: step(2, 200, 2, 5) 
+    schedule: step(200, 320, 10, 5)
   writelog: all
   uris:
-    - "/fac/100" 
-    - "/io/100" 
+    # - "/fac/100"
+    - "/io/100"
 
 console:
   enabled: true
 
 telegraf:
-  enabled: false 
+  enabled: false
