@@ -19,7 +19,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - ./data/logs/nginx:/var/log/nginx
+      - ./nginx/logs:/var/log/nginx
 
   goaccess:
     image: allinurl/goaccess
@@ -28,7 +28,7 @@ services:
     ports:  
       - "7890:7890"
     volumes:
-      - ./data/logs/nginx:/logs
+      - ./nginx/logs:/logs
     command: "/logs/access.log -o /logs/report.html --log-format=COMBINED --real-time-html"
 
   app:

@@ -12,7 +12,12 @@ upstream app {
 
 ## GoAccess
 Анализатор логов в режиме реального времени. Может работать с логами доступа Nginx (access.log).   
-Поднят в отдельном контейнере и имеет доступ к папке с логами nginx (data/logs/nginx) на хосте.
+Поднят в отдельном контейнере и имеет доступ к папке с логами nginx (nginx/logs) на хосте.
+В этой же папке создается файл отчета 
+```
+nginx/logs/report.html
+```
+который можно просматривать в браузере.
 
 ## App
 Простое Python приложение на фреймворке Flask.
@@ -32,7 +37,7 @@ upstream app {
 
 ### Запуск
 ```
-docker exec -ti tank yandex-tank -c load.yaml
+docker exec -ti tank yandex-tank -c load_*.yaml
 ```
 ### Просмотр отчета
 Веб версия отчета доступна в личном кабинете https://overload.yandex.net/ 
