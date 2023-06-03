@@ -14,8 +14,7 @@ phantom:
     schedule: step(200, 320, 10, 5)
   writelog: all
   uris:
-    # - "/fac/100"
-    - "/io/100"
+    - "/fac/100"
 
 console:
   enabled: true

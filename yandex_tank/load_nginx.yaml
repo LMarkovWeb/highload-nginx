@@ -22,8 +22,7 @@ phantom:
     schedule: step(100, 400, 10, 5)
   writelog: all
   uris:
-    # - "/fac/100"
-    - "/io/100"
+    - "/fac/100"
 
 # включаем вывод результатов в консоль
 console:
