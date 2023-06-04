@@ -18,7 +18,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
 
   goaccess:
@@ -31,6 +31,7 @@ services:
       - ./nginx/logs:/logs
     command: "/logs/access.log -o /logs/report.html --log-format=COMBINED --real-time-html"
 
+# Python App (3 instances)
   app1:
     build: ./app
     container_name: app1
