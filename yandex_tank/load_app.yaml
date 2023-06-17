@@ -6,15 +6,21 @@ overload:
   job_dsc: Нагрузочное тестирование для Python приложения.
 
 phantom:
-  address: app:5000
+  address: app1:5000
   headers:
     - "[Host: yandex-tank.docker.local]"
   load_profile:
     load_type: rps
-    schedule: step(200, 320, 10, 5)
+    schedule: step(100, 1000, 100, 5)
   writelog: all
   uris:
     - "/fac/100"
+
+autostop:
+  autostop:
+    - net(110,30,5)
+    - net(99,500,5)
+    - net(104,30,5)
 
 console:
   enabled: true
