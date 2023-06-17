@@ -18,24 +18,46 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
 
   goaccess:
     image: allinurl/goaccess
     container_name: goaccess
     restart: unless-stopped
-    ports:  
+    ports:
       - "7890:7890"
     volumes:
       - ./nginx/logs:/logs
     command: "/logs/access.log -o /logs/report.html --log-format=COMBINED --real-time-html"
 
-  app:
+# Python App (3 instances)
+  app1:
     build: ./app
-    container_name: app
+    container_name: app1
+    hostname: app1
     restart: unless-stopped
     ports:
-      - "5000:5000"
+      - "5001:5000"
+    volumes:
+      - ./app:/app
+
+  app2:
+    build: ./app
+    container_name: app2
+    hostname: app2
+    restart: unless-stopped
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./app:/app
+
+  app3:
+    build: ./app
+    container_name: app3
+    hostname: app3
+    restart: unless-stopped
+    ports:
+      - "5003:5000"
     volumes:
       - ./app:/app

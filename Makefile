@@ -15,3 +15,6 @@ tank-nginx:
 
 tank-app:
 	@docker exec -ti tank yandex-tank -c load_app.yaml
+
+nginx-enter:
+	@docker exec -ti nginx /bin/bash

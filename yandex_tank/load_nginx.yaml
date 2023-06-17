@@ -1,6 +1,6 @@
 # Overloader – используется для загрузки полученных данных в Yandex Overloader или InfluxDB
 overload:
-  enabled: true 
+  enabled: true
   package: yandextank.plugins.DataUploader
   token_file: "token.txt"
   job_name: nginx_load
@@ -19,11 +19,20 @@ phantom:
     load_type: rps
     # https://yandextank.readthedocs.io/en/latest/tutorial.html?highlight=load_type#tutorials
     # (a,b,step,dur), где a – начальное кол-во rps, b – конечное, step – на сколько rps увеличивать, dur – время между каждым step
-    schedule: step(5, 200, 5, 5) 
+    schedule: step(500, 10000, 100, 5)
   writelog: all
   uris:
-    - "/fac/100" 
-    - "/io/100" 
+    - "/fac/100"
+
+autostop:
+  # https://yandextank.readthedocs.io/en/latest/tutorial.html#autostop
+  autostop:
+    # Если кол-во net-кодов 110 (Connection timed out) достигло 50 каждные 5 сек.
+    - net(110,10,5)
+    # Если кол-во net-кодов 99 (Cannot assign requested address) достигло 500 каждные 5 сек.
+    - net(99,500,5)
+    # Если кол-во net-кодов 104 (Connection reset by peer) достигло 30 каждные 5 сек.
+    - net(104,30,5)
 
 # включаем вывод результатов в консоль
 console:
@@ -32,4 +41,4 @@ console:
 # Telegraf – для мониторинга тестируемого хоста – подключается по SSH, запускает свой агент и снимает метрики CPU/mem/etc.
 # https://yandextank.readthedocs.io/en/latest/core_and_modules.html#telegraf
 telegraf:
-  enabled: false 
+  enabled: false
