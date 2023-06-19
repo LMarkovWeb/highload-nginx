@@ -18,3 +18,6 @@ tank-app:
 
 nginx-enter:
 	@docker exec -ti nginx /bin/bash
+
+nginx-reload:
+	@docker exec -ti nginx nginx -s reload
