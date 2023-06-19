@@ -13,7 +13,7 @@ phantom:
   address: nginx:80
   # заголовки, передаваемые на тестируемый сервер
   headers:
-    - "[Host: yandex-tank.docker.local]"
+    - "[User-Agent: yandex-tank.docker.local]"
   load_profile:
     # rps: requests per second – указываем желаемое количество запросов в секунду
     load_type: rps
