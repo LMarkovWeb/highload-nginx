@@ -18,9 +18,10 @@ phantom:
 
 autostop:
   autostop:
-    - net(110,30,5)
-    - net(99,500,5)
-    - net(104,30,5)
+    - net(110,10,5)
+    - net(99,10,5)
+    - net(104,10,5)
+    - http(5xx,10,5)
 
 console:
   enabled: true
