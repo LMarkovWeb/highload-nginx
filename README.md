@@ -1,5 +1,8 @@
 # Highload Nginx
 
+ - [Презентация](https://docs.google.com/presentation/d/1qipiNiw-weJtsVqXs2p8QB_YmpQBAEnX/edit?usp=sharing&ouid=107294102081105941764&rtpof=true&sd=true)
+
+
 ## Nginx
 Контейнер nginx:latest с минимальным конфигом (nginx/default.conf).  
 Настроен upstream на приложение на Python:
@@ -67,3 +70,7 @@ make stop
  - [Nginx: Модуль ngx_http_log_module](http://nginx.org/ru/docs/http/ngx_http_log_module.html)
  - [Nginx: Все директивы](http://nginx.org/en/docs/dirindex.html)
  - [Nginx: Ускоряем Nginx за 5 минут](https://habr.com/ru/articles/198982/)
+ - [Avoiding the Top 10 NGINX Configuration Mistakes](https://www.nginx.com/blog/avoiding-top-10-nginx-configuration-mistakes/)
+ - [netshoot: a Docker + Kubernetes network trouble-shooting swiss-army container](https://github.com/nicolaka/netshoot)
+
+ 

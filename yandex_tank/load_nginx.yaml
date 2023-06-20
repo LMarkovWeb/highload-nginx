@@ -13,13 +13,14 @@ phantom:
   address: nginx:80
   # заголовки, передаваемые на тестируемый сервер
   headers:
-    - "[Host: yandex-tank.docker.local]"
+    - "[User-Agent: yandex-tank.docker.local]"
+    - "[Host: yandex.tank]"
   load_profile:
     # rps: requests per second – указываем желаемое количество запросов в секунду
     load_type: rps
     # https://yandextank.readthedocs.io/en/latest/tutorial.html?highlight=load_type#tutorials
     # (a,b,step,dur), где a – начальное кол-во rps, b – конечное, step – на сколько rps увеличивать, dur – время между каждым step
-    schedule: step(500, 10000, 100, 5)
+    schedule: step(400, 4000, 100, 5)
   writelog: all
   uris:
     - "/fac/100"
@@ -30,9 +31,11 @@ autostop:
     # Если кол-во net-кодов 110 (Connection timed out) достигло 50 каждные 5 сек.
     - net(110,10,5)
     # Если кол-во net-кодов 99 (Cannot assign requested address) достигло 500 каждные 5 сек.
-    - net(99,500,5)
+    - net(99,10,5)
     # Если кол-во net-кодов 104 (Connection reset by peer) достигло 30 каждные 5 сек.
-    - net(104,30,5)
+    - net(104,10,5)
+    # Превышение ошибок 5хх
+    - http(5xx,10,5)
 
 # включаем вывод результатов в консоль
 console:

@@ -10,7 +10,9 @@ services:
       - ./yandex_tank:/var/loadtest
     stdin_open: true
     tty: true
-
+    networks:
+      - priv_net
+      
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -20,6 +22,8 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
+    networks:
+      - priv_net
 
   goaccess:
     image: allinurl/goaccess
@@ -30,6 +34,8 @@ services:
     volumes:
       - ./nginx/logs:/logs
     command: "/logs/access.log -o /logs/report.html --log-format=COMBINED --real-time-html"
+    networks:
+      - priv_net
 
 # Python App (3 instances)
   app1:
@@ -41,6 +47,8 @@ services:
       - "5001:5000"
     volumes:
       - ./app:/app
+    networks:
+      - priv_net
 
   app2:
     build: ./app
@@ -51,6 +59,8 @@ services:
       - "5002:5000"
     volumes:
       - ./app:/app
+    networks:
+      - priv_net
 
   app3:
     build: ./app
@@ -61,3 +71,8 @@ services:
       - "5003:5000"
     volumes:
       - ./app:/app
+    networks:
+      - priv_net
+
+networks:
+  priv_net: {}
