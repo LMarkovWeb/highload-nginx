@@ -9,6 +9,7 @@ phantom:
   address: app1:5000
   headers:
     - "[Host: yandex-tank.docker.local]"
+    - "[Host: yandex.tank]"
   load_profile:
     load_type: rps
     schedule: step(100, 1000, 100, 5)
